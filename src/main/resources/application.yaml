@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: gujarat-family-id
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/family_id_db
+    username: postgres
+    password: Vishvam@0917
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080

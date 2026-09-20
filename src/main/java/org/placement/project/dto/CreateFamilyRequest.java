@@ -1,0 +1,17 @@
+package org.placement.project.dto;
+
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class CreateFamilyRequest {
+
+    private String familyName;
+    private Double annualIncome;
+    private String category;
+    private String ruralUrban;
+    private AddressDTO address;
+}
