@@ -1,226 +1,300 @@
-Gujarat Family ID
+# Gujarat Family ID
 
-A full-stack web application for creating and managing a unique Family ID for households in Gujarat, maintaining family/member information, checking eligibility for government schemes, and tracking scheme applications.
+A full-stack web application for introducing a **unique Family ID system in Gujarat** to centralize family information, identify eligible government schemes, and manage scheme applications.
 
-🚀 Project Overview
+## 🚀 Overview
 
 The Gujarat Family ID platform provides a centralized family-level record that can be used to:
 
-Create a unique Gujarat Family ID
-Store family and member information
-Manage family members
-Maintain address and demographic details
-Identify government schemes for which a family may be eligible
-Apply for eligible schemes
-Track application status
-View family-level dashboard information
+- Create a unique Gujarat Family ID
+- Store family and member information
+- Manage family members
+- Maintain address and demographic details
+- Identify government schemes for which a family is eligible
+- Apply for eligible schemes
+- Track application status
+- View a consolidated family dashboard
 
-The project is designed around the problem statement:
+### Problem Statement
 
-“Introduction of family ID in Gujarat to improve beneficiary management for various government schemes.”
+> **Introduction of family ID in Gujarat to improve beneficiary management for various government schemes.**
 
-🏗️ Solution Architecture
-                    ┌──────────────────────┐
-                    │       Citizens       │
-                    │  / Government Users  │
-                    └──────────┬───────────┘
-                               │
-                               │ HTTPS
-                               ▼
-                 ┌──────────────────────────┐
-                 │      React + Vite        │
-                 │        Frontend          │
-                 │                          │
-                 │  • Family Dashboard     │
-                 │  • Family Management    │
-                 │  • Member Management     │
-                 │  • Scheme Eligibility   │
-                 │  • Applications         │
-                 └────────────┬─────────────┘
-                              │
-                              │ REST API
-                              ▼
-                 ┌──────────────────────────┐
-                 │     Spring Boot API      │
-                 │        Java 21           │
-                 │                          │
-                 │  • Family Management    │
-                 │  • Member Management     │
-                 │  • Scheme Management     │
-                 │  • Eligibility Engine    │
-                 │  • Application Tracking  │
-                 │  • Dashboard APIs        │
-                 └────────────┬─────────────┘
-                              │
-                              │ JPA / Hibernate
-                              ▼
-                 ┌──────────────────────────┐
-                 │       PostgreSQL         │
-                 │                          │
-                 │  • Families              │
-                 │  • Family Members        │
-                 │  • Addresses             │
-                 │  • Schemes               │
-                 │  • Applications           │
-                 └──────────────────────────┘
-Deployment
-GitHub
-   │
-   ├──────────────► Vercel
-   │                 │
-   │                 └── React Frontend
-   │
-   └──────────────► Render
-                     │
-                     ├── Docker
-                     ├── Spring Boot Backend
-                     │
-                     └── PostgreSQL
-🛠️ Tech Stack
-Frontend
-React
-Vite
-Material UI
-React Router
-Axios
-JavaScript
-Backend
-Java 21
-Spring Boot 3.5.6
-Spring Web
-Spring Data JPA
-Hibernate
-Maven
-Bean Validation
-Database
-PostgreSQL
-Deployment
-Docker
-Render
-Vercel
-GitHub
-✨ Key Features
-1. Family ID Generation
+---
 
-Each registered family receives a unique identifier in the format:
+## 🏗️ Solution Architecture
 
+```text
+                         ┌─────────────────────┐
+                         │       USERS         │
+                         │                     │
+                         │ Citizens            │
+                         │ Government Officials│
+                         │ Administrators      │
+                         └──────────┬──────────┘
+                                    │
+                                  HTTPS
+                                    │
+                                    ▼
+                    ┌─────────────────────────────┐
+                    │       REACT FRONTEND        │
+                    │          Vite + MUI         │
+                    │                             │
+                    │  • Family Dashboard        │
+                    │  • Family Management        │
+                    │  • Member Management        │
+                    │  • Scheme Eligibility       │
+                    │  • Scheme Applications      │
+                    └──────────────┬──────────────┘
+                                   │
+                              REST APIs
+                                   │
+                                   ▼
+                    ┌─────────────────────────────┐
+                    │      SPRING BOOT BACKEND    │
+                    │          Java 21             │
+                    │                             │
+                    │  • Family Management        │
+                    │  • Member Management         │
+                    │  • Scheme Management         │
+                    │  • Eligibility Engine        │
+                    │  • Application Management    │
+                    │  • Dashboard APIs            │
+                    └──────────────┬──────────────┘
+                                   │
+                             JPA / Hibernate
+                                   │
+                                   ▼
+                    ┌─────────────────────────────┐
+                    │        POSTGRESQL           │
+                    │                             │
+                    │  • Families                 │
+                    │  • Family Members            │
+                    │  • Addresses                 │
+                    │  • Schemes                  │
+                    │  • Applications              │
+                    └─────────────────────────────┘
+```
+
+### Deployment Architecture
+
+```text
+                         GitHub
+                           │
+              ┌────────────┴────────────┐
+              │                         │
+              ▼                         ▼
+          Vercel                      Render
+              │                         │
+              ▼                         ├── Docker
+      React Frontend                    │
+                                        ├── Spring Boot
+                                        │
+                                        ▼
+                                  PostgreSQL
+```
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- React
+- Vite
+- Material UI
+- Axios
+- JavaScript
+
+### Backend
+
+- Java 21
+- Spring Boot 3.5.6
+- Spring Web
+- Spring Data JPA
+- Hibernate
+- Maven
+- Bean Validation
+
+### Database
+
+- PostgreSQL
+
+### Deployment
+
+- Docker
+- Render
+- Vercel
+- GitHub
+
+---
+
+## ✨ Features
+
+### Family ID Generation
+
+Every family receives a unique identifier in the format:
+
+```text
 GJ-FAM-XXXXXXXXXX
+```
 
-The Family ID can subsequently be used to retrieve the family's complete information.
-
-2. Family Management
+### Family Management
 
 Stores:
 
-Family name
-Annual income
-Category
-Rural / Urban classification
-Address
-Creation and update timestamps
-3. Family Member Management
+- Family name
+- Annual income
+- Category
+- Rural / Urban classification
+- Address
+- Creation and update timestamps
 
-Each family can have multiple members with information such as:
+### Family Member Management
 
-Name
-Date of birth
-Gender
-Identity number
-Mobile number
-Relationship with family
-Education
-Occupation
-Employment status
-Annual income
-Verification status
+Each family can have multiple members with:
+
+- First name
+- Last name
+- Date of birth
+- Gender
+- Identity number
+- Mobile number
+- Relationship
+- Education level
+- Occupation
+- Employment status
+- Annual income
+- Verification status
 
 Supported operations:
 
+```text
 Add Member
 View Member
 Update Member
 Delete Member
-4. Government Scheme Management
+```
 
-Schemes contain eligibility conditions including:
+### Government Scheme Management
 
-Minimum family income
-Maximum family income
-Rural / Urban applicability
-Required category
-Active/inactive status
-5. Eligibility Engine
+Government schemes can define eligibility criteria such as:
 
-The system automatically evaluates active schemes against family information.
+- Minimum family income
+- Maximum family income
+- Rural / Urban applicability
+- Required category
+- Active / inactive status
 
-Example:
+### Scheme Eligibility
 
-Family
- ├── Annual Income
- ├── Category
- └── Rural/Urban
-          │
-          ▼
-   Eligibility Engine
-          │
-          ▼
- Eligible Government Schemes
-6. Scheme Applications
+The system automatically evaluates family information against active scheme criteria and displays eligible schemes.
+
+```text
+Family Information
+       │
+       ├── Annual Income
+       ├── Category
+       └── Rural / Urban
+              │
+              ▼
+      Eligibility Engine
+              │
+              ▼
+     Eligible Schemes
+```
+
+### Scheme Applications
 
 Families can apply for eligible schemes and track their application status.
 
-Application lifecycle:
-
+```text
 APPLIED
-   ↓
+   │
+   ▼
 UNDER_REVIEW
-   ↓
-APPROVED / REJECTED
-   ↓
+   │
+   ├──────────────┐
+   ▼              ▼
+APPROVED       REJECTED
+   │
+   ▼
 BENEFIT_RECEIVED
-7. Family Dashboard
+```
+
+### Family Dashboard
 
 The dashboard provides a consolidated view of:
 
-Family information
-Total members
-Member details
-Eligible schemes
-Existing applications
-🔌 REST API
-Family
-Method	Endpoint	Description
-POST	/api/families	Create family
-GET	/api/families/{familyId}	Get family
-Family Members
-Method	Endpoint	Description
-POST	/api/families/{familyId}/members	Add member
-GET	/api/families/{familyId}/members	Get members
-GET	/api/families/{familyId}/members/{memberId}	Get member
-PUT	/api/families/{familyId}/members/{memberId}	Update member
-DELETE	/api/families/{familyId}/members/{memberId}	Delete member
-Schemes
-Method	Endpoint	Description
-POST	/api/schemes	Create scheme
-GET	/api/schemes	Get schemes
-GET	/api/schemes/{schemeId}	Get scheme
-PUT	/api/schemes/{schemeId}	Update scheme
-DELETE	/api/schemes/{schemeId}	Delete scheme
-Eligibility
-Method	Endpoint	Description
-GET	/api/families/{familyId}/eligible-schemes	Get eligible schemes
-Applications
-Method	Endpoint	Description
-POST	/api/families/{familyId}/applications	Apply for scheme
-GET	/api/families/{familyId}/applications	Get applications
-GET	/api/families/{familyId}/applications/{applicationId}	Get application
-PUT	/api/families/{familyId}/applications/{applicationId}/status	Update status
-Dashboard
+- Family information
+- Total family members
+- Member details
+- Eligible schemes
+- Existing applications
+
+---
+
+## 🔌 REST API
+
+### Family APIs
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/families` | Create family |
+| `GET` | `/api/families/{familyId}` | Get family |
+
+### Family Member APIs
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/families/{familyId}/members` | Add member |
+| `GET` | `/api/families/{familyId}/members` | Get members |
+| `GET` | `/api/families/{familyId}/members/{memberId}` | Get member |
+| `PUT` | `/api/families/{familyId}/members/{memberId}` | Update member |
+| `DELETE` | `/api/families/{familyId}/members/{memberId}` | Delete member |
+
+### Scheme APIs
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/schemes` | Create scheme |
+| `GET` | `/api/schemes` | Get all schemes |
+| `GET` | `/api/schemes/{schemeId}` | Get scheme |
+| `PUT` | `/api/schemes/{schemeId}` | Update scheme |
+| `DELETE` | `/api/schemes/{schemeId}` | Delete scheme |
+
+### Eligibility API
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/families/{familyId}/eligible-schemes` | Get eligible schemes |
+
+### Application APIs
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/families/{familyId}/applications` | Apply for scheme |
+| `GET` | `/api/families/{familyId}/applications` | Get applications |
+| `GET` | `/api/families/{familyId}/applications/{applicationId}` | Get application |
+| `PUT` | `/api/families/{familyId}/applications/{applicationId}/status` | Update application status |
+
+### Dashboard API
+
+```http
 GET /api/families/{familyId}/dashboard
+```
 
-Returns family details, members, eligible schemes, and applications in a single response.
+Returns:
 
-📁 Backend Structure
+- Family details
+- Family members
+- Eligible schemes
+- Scheme applications
+
+---
+
+## 📂 Backend Structure
+
+```text
 src/main/java/org/placement/project/
 │
 ├── config/
@@ -254,7 +328,13 @@ src/main/java/org/placement/project/
     ├── FamilyMemberService.java
     ├── SchemeService.java
     └── ApplicationService.java
-📁 Frontend Structure
+```
+
+---
+
+## 📂 Frontend Structure
+
+```text
 src/
 │
 ├── services/
@@ -265,27 +345,41 @@ src/
 ├── App.css
 ├── index.css
 └── main.jsx
-⚙️ Running Locally
-Prerequisites
+```
 
-Make sure you have:
+---
 
-Java 21
-PostgreSQL
-Node.js
-npm
-Docker (optional)
-Backend
+## ⚙️ Local Setup
 
-Clone the repository:
+### Prerequisites
 
+- Java 21
+- PostgreSQL
+- Node.js
+- npm
+- Docker (optional)
+
+### Clone Backend
+
+```bash
 git clone https://github.com/Vishvam16/gujarat-family-id-backend.git
 cd gujarat-family-id-backend
+```
 
-Configure PostgreSQL and environment variables.
+### Backend Configuration
+
+Configure the PostgreSQL connection using environment variables:
+
+```text
+DB_URL
+DB_USERNAME
+DB_PASSWORD
+PORT
+```
 
 Example:
 
+```yaml
 spring:
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5433/family_id_db}
@@ -298,26 +392,45 @@ spring:
 
 server:
   port: ${PORT:8080}
+```
 
-Run:
+### Run Backend
 
+Windows:
+
+```powershell
 .\mvnw.cmd spring-boot:run
+```
 
 Backend:
 
+```text
 http://localhost:8080
-Frontend
+```
+
+---
+
+## 💻 Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 Frontend:
 
+```text
 http://localhost:5173
-🐳 Docker
+```
+
+---
+
+## 🐳 Docker
 
 The backend uses a multi-stage Docker build.
 
+```dockerfile
 FROM maven:3.9-eclipse-temurin-21 AS build
 
 WORKDIR /build
@@ -336,57 +449,93 @@ COPY --from=build /build/target/family-id-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
+```
 
-Build:
+### Build Docker Image
 
+```bash
 docker build -t gujarat-family-id-backend .
+```
 
-Run:
+### Run Docker Container
 
+```bash
 docker run -p 8080:8080 gujarat-family-id-backend
-☁️ Deployment
-Backend
+```
 
-The Spring Boot backend is containerized using Docker and deployed on Render.
+---
 
-Frontend
+## ☁️ Deployment
 
-The React frontend is configured for deployment on Vercel.
+### Backend
 
-Database
+The Spring Boot backend is containerized using Docker and deployed on **Render**.
 
-PostgreSQL is hosted using Render's managed PostgreSQL service.
+### Frontend
 
-🔐 Data & Configuration
+The React frontend is deployed on **Vercel**.
 
-Database credentials are supplied through environment variables rather than being hardcoded in the application.
+### Database
 
+The application uses **Render Managed PostgreSQL**.
+
+### CI/CD
+
+```text
+GitHub
+   │
+   ├── Push to main
+   │
+   ▼
+Render
+   │
+   ├── Build Docker Image
+   └── Deploy Spring Boot Backend
+```
+
+---
+
+## 🔐 Configuration
+
+Database credentials are provided through environment variables and should never be committed to GitHub.
+
+```text
 DB_URL
 DB_USERNAME
 DB_PASSWORD
 PORT
+```
 
-Sensitive credentials should never be committed to GitHub.
+---
 
-🎯 Future Scope
+## 🔮 Future Scope
 
-Potential extensions include:
+- Integration with Gujarat government databases
+- Aadhaar/identity verification integrations
+- Digital document storage
+- SMS and email notifications
+- Government department API integrations
+- Advanced beneficiary analytics
+- Automated scheme recommendations
+- Verification and approval workflows
+- Multilingual support including Gujarati
+- Mobile application
 
-Integration with existing Gujarat government databases
-Aadhaar/identity verification integrations
-Digital document storage
-SMS/email notifications
-Government department integrations
-Advanced beneficiary analytics
-Scheme recommendation based on family profiles
-Audit and verification workflows
-Mobile application
-Multilingual support including Gujarati
-👥 Project Goal
+---
 
-The primary goal is to establish a single family-level identity and information layer that can simplify beneficiary identification, reduce duplicate information, and make access to government welfare schemes more streamlined.
+## 🎯 Project Goal
 
-📌 Repository
+The goal of the Gujarat Family ID platform is to establish a **centralized family-level information system** that can help streamline beneficiary identification, reduce duplicate records, improve scheme eligibility assessment, and simplify access to government welfare programs.
 
-Backend:
-Gujarat Family ID Backend – GitHub
+---
+
+## 📌 Repository
+
+**Backend:**  
+https://github.com/Vishvam16/gujarat-family-id-backend
+
+---
+
+## 👨‍💻 Project
+
+Developed as a **hackathon/academic project** focused on improving digital beneficiary management through a centralized Family ID system.
