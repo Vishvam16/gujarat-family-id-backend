@@ -3,9 +3,9 @@ spring:
     name: gujarat-family-id
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/family_id_db
-    username: postgres
-    password: Vishvam@0917
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/family_id_db}
+    username: ${DB_USERNAME:postgres}
+    password: ${Vishvam@0917}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -17,4 +17,4 @@ spring:
         format_sql: true
 
 server:
-  port: 8080
+  port: ${PORT:8080}
